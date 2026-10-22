@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Myanmar Open Golf</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- FontAwesome CDN -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    integrity="sha512-pVnn4P5Vw6wSgS4z4pKVPkDgC9S0J9XK7OpXc4jLHFk9C9C6tE5bjfJbG8VyM6gtcG0h8lkqWgY2mKZB0dKJQ=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  />
+  <style>
+    /* Custom colors matching the design */
+    :root {
+      --primary-emerald: #064e3b;
+      --accent-gold: #d97706;
+    }
+    .bg-primary { background-color: var(--primary-emerald); }
+    .text-primary { color: var(--primary-emerald); }
+    .bg-accent { background-color: var(--accent-gold); }
+    .text-accent { color: var(--accent-gold); }
+    .shadow-lightbox { box-shadow: 0 0 20px rgba(0,0,0,0.8); }
+  </style>
+</head>
+<body class="font-sans antialiased text-gray-800 bg-gray-100">
+  <!-- Header -->
+  <header class="bg-primary text-white fixed top-0 inset-x-0 z-50 shadow-md">
+    <div class="container mx-auto flex items-center justify-between p-4">
+      <a href="#" class="text-2xl font-bold flex items-center space-x-2">
+        <i class="fas fa-golf-ball"></i>
+        <span>Myanmar Open Golf</span>
+      </a>
+      <nav class="hidden md:flex space-x-6">
+        <a href="#hero" class="hover:text-accent">Home</a>
+        <a href="#leaderboard" class="hover:text-accent">Leaderboard</a>
+        <a href="#champions" class="hover:text-accent">Champions</a>
+        <a href="#venue" class="hover:text-accent">Venue</a>
+        <a href="#contact" class="hover:text-accent">Contact</a>
+      </nav>
+      <button id="mobile-menu-btn" class="md:hidden focus:outline-none">
+        <i class="fas fa-bars text-2xl"></i>
+      </button>
+    </div>
+    <nav id="mobile-menu" class="md:hidden hidden bg-primary">
+      <ul class="flex flex-col space-y-2 p-4">
+        <li><a href="#hero" class="block hover:text-accent">Home</a></li>
+        <li><a href="#leaderboard" class="block hover:text-accent">Leaderboard</a></li>
+        <li><a href="#champions" class="block hover:text-accent">Champions</a></li>
+        <li><a href="#venue" class="block hover:text-accent">Venue</a></li>
+        <li><a href="#contact" class="block hover:text-accent">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="pt-20">
+    <!-- Hero Banner -->
+    <section id="hero" class="relative bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1535131749006-b7f58c99034b?auto=format&fit=crop&w=2000&q=80');">
+      <div class="bg-black/50 absolute inset-0"></div>
+      <div class="container mx-auto relative text-center text-white py-40">
+        <h1 class="text-5xl md:text-6xl font-bold mb-4">Myanmar Open Golf Tournament</h1>
+        <p class="text-xl md:text-2xl mb-8">Experience the elegance of golf amidst Myanmar's finest courses.</p>
+        <div class="flex justify-center space-x-4">
+          <a href="#leaderboard" class="px-6 py-3 border border-white rounded hover:bg-accent transition">
+            View Leaderboard
+          </a>
+          <a href="#contact" class="px-6 py-3 bg-accent text-white rounded hover:bg-primary transition">
+            Register Now
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Leaderboard -->
+    <section id="leaderboard" class="container mx-auto py-12">
+      <h2 class="text-3xl font-bold text-primary mb-6 text-center">Live Leaderboard</h2>
+      <div class="max-w-xl mx-auto mb-4">
+        <input type="text" id="search-input" placeholder="Search players..." class="w-full p-2 border rounded" />
+      </div>
+      <div class="overflow-x-auto">
+        <table class="min-w-full bg-white shadow rounded">
+          <thead class="bg-primary text-white">
+            <tr>
+              <th class="px-4 py-2 text-left">Rank</th>
+              <th class="px-4 py-2 text-left">Player</th>
+              <th class="px-4 py-2 text-left">Country</th>
+              <th class="px-4 py-2 text-left">Score</th>
+            </tr>
+          </thead>
+          <tbody id="leaderboard-body" class="text-gray-700">
+            <!-- Sample rows; replace with real data -->
+            <tr class="border-t">
+              <td class="px-4 py-2">1</td>
+              <td class="px-4 py-2">John Doe</td>
+              <td class="px-4 py-2">🇲🇲</td>
+              <td class="px-4 py-2">-12</td>
+            </tr>
+            <tr class="border-t bg-gray-50">
+              <td class="px-4 py-2">2</td>
+              <td class="px-4 py-2">Jane Smith</td>
+              <td class="px-4 py-2">🇺🇸</td>
+              <td class="px-4 py-2">-10</td>
+            </tr>
+            <tr class="border-t">
+              <td class="px-4 py-2">3</td>
+              <td class="px-4 py-2">Lee Wang</td>
+              <td class="px-4 py-2">🇨🇳</td>
+              <td class="px-4 py-2">-9</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Past Champions -->
+    <section id="champions" class="container mx-auto py-12">
+      <h2 class="text-3xl font-bold text-primary mb-6 text-center">Past Champions</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Champion Card Example -->
+        <div class="bg-white rounded shadow p-4 text-center">
+          <img src="https://images.unsplash.com/photo-1593111774240-d529f12cf4bb?auto=format&fit=crop&w=1200&q=80" alt="Paul Peterson" class="w-32 h-32 mx-auto rounded-full mb-4" loading="lazy" />
+          <h3 class="text-xl font-semibold mb-1">Paul Peterson</h3>
+          <p class="text-gray-600 mb-2">2018 Champion</p>
+          <p class="text-gray-500">Score: -15</p>
+        </div>
+        <!-- Add more champion cards as needed -->
+      </div>
+    </section>
+
+    <!-- Venue Spotlight & Gallery -->
+    <section id="venue" class="container mx-auto py-12">
+      <h2 class="text-3xl font-bold text-primary mb-6 text-center">Venue Spotlight</h2>
+      <div class="grid md:grid-cols-2 gap-8 mb-8">
+        <div class="bg-white rounded shadow p-4">
+          <img src="https://images.unsplash.com/photo-1587174486073-ae5e5cff23aa?auto=format&fit=crop&w=1600&q=80" alt="Pun Hlaing Golf Club" class="w-full h-48 object-cover rounded mb-4" loading="lazy" />
+          <h3 class="text-2xl font-semibold mb-2">Pun Hlaing Golf Club</h3>
+          <p class="text-gray-600">A premier course offering challenging fairways and stunning scenery.</p>
+        </div>
+        <div class="bg-white rounded shadow p-4">
+          <img src="https://images.unsplash.com/photo-1592919505780-303950717480?auto=format&fit=crop&w=1600&q=80" alt="Yangon Golf Club" class="w-full h-48 object-cover rounded mb-4" loading="lazy" />
+          <h3 class="text-2xl font-semibold mb-2">Yangon Golf Club</h3>
+          <p class="text-gray-600">Historic venue known for its immaculate greens and hospitality.</p>
+        </div>
+      </div>
+
+      <h3 class="text-2xl font-bold text-primary mb-4 text-center">Photo Gallery</h3>
+      <div class="grid grid-cols-2 md:grid-cols-3 gap-4" id="gallery">
+        <!-- Placeholder gallery images; replace URLs as desired -->
+        <img src="https://images.unsplash.com/photo-1502334206911-8c09e3e76e60?auto=format&fit=crop&w=1200&q=80" alt="Gallery 1" class="cursor-pointer rounded" loading="lazy" />
+        <img src="https://images.unsplash.com/photo-1526401485004-2c5e5417c7e2?auto=format&fit=crop&w=1200&q=80" alt="Gallery 2" class="cursor-pointer rounded" loading="lazy" />
+        <img src="https://images.unsplash.com/photo-1517649763962-0c623066013b?auto=format&fit=crop&w=1200&q=80" alt="Gallery 3" class="cursor-pointer rounded" loading="lazy" />
+        <img src="https://images.unsplash.com/photo-1513124220-9f4ec1792e5b?auto=format&fit=crop&w=1200&q=80" alt="Gallery 4" class="cursor-pointer rounded" loading="lazy" />
+        <img src="https://images.unsplash.com/photo-1517328683826-8a6c8a8a1118?auto=format&fit=crop&w=1200&q=80" alt="Gallery 5" class="cursor-pointer rounded" loading="lazy" />
+        <img src="https://images.unsplash.com/photo-1526799425685-57375fd7d539?auto=format&fit=crop&w=600&q=80" alt="Gallery 6" class="cursor-pointer rounded" loading="lazy" />
+      </div>
+    </section>
+
+    <!-- Registration / Contact Form -->
+    <section id="contact" class="container mx-auto py-12">
+      <h2 class="text-3xl font-bold text-primary mb-6 text-center">Register / Contact</h2>
+      <form id="contact-form" class="max-w-lg mx-auto bg-white rounded shadow p-6">
+        <div class="mb-4">
+          <label class="block text-gray-700 mb-1" for="name">Name</label>
+          <input type="text" id="name" class="w-full border rounded p-2" required />
+        </div>
+        <div class="mb-4">
+          <label class="block text-gray-700 mb-1" for="email">Email</label>
+          <input type="email" id="email" class="w-full border rounded p-2" required />
+        </div>
+        <div class="mb-4">
+          <label class="block text-gray-700 mb-1" for="phone">Phone</label>
+          <input type="tel" id="phone" class="w-full border rounded p-2" required />
+        </div>
+        <div class="mb-4">
+          <label class="block text-gray-700 mb-1" for="message">Message</label>
+          <textarea id="message" rows="4" class="w-full border rounded p-2"></textarea>
+        </div>
+        <button type="submit" class="w-full bg-primary text-white py-2 rounded hover:bg-accent transition">Submit</button>
+      </form>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-primary text-white py-6 mt-12">
+    <div class="container mx-auto px-4 flex flex-col md:flex-row justify-between items-center">
+    <p>&copy; <span id="year"></span> Myanmar Open Golf. All rights reserved.</p>
+    <p class="mt-2 md:mt-0">Developed By Hsu Pan Htwar 22/10/2026</p>
+</div>
+    </div>
+  </footer>
+
+  <!-- Lightbox Modal -->
+  <div id="lightbox" class="fixed inset-0 bg-black/80 hidden items-center justify-center z-50">
+    <button id="lightbox-close" class="absolute top-4 right-4 text-white text-3xl" aria-label="Close">&times;</button>
+    <img id="lightbox-img" src="" alt="" class="max-w-full max-h-full rounded shadow-lightbox" />
+  </div>
+
+  <script>
+    // Mobile menu toggle
+    document.getElementById('mobile-menu-btn').addEventListener('click', () => {
+      const menu = document.getElementById('mobile-menu');
+      menu.classList.toggle('hidden');
+    });
+
+    // Leaderboard live search
+    document.getElementById('search-input').addEventListener('input', function () {
+      const filter = this.value.toLowerCase();
+      const rows = document.querySelectorAll('#leaderboard-body tr');
+      rows.forEach(row => {
+        const text = row.textContent.toLowerCase();
+        row.style.display = text.includes(filter) ? '' : 'none';
+      });
+    });
+
+    // Lightbox functionality
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+    document.querySelectorAll('#gallery img').forEach(img => {
+      img.addEventListener('click', () => {
+        lightboxImg.src = img.src;
+        lightboxImg.alt = img.alt;
+        lightbox.classList.remove('hidden');
+        lightbox.classList.add('flex');
+      });
+    });
+    document.getElementById('lightbox-close').addEventListener('click', () => {
+      lightbox.classList.add('hidden');
+      lightbox.classList.remove('flex');
+    });
+    // Close on ESC key
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape' && !lightbox.classList.contains('hidden')) {
+        lightbox.classList.add('hidden');
+        lightbox.classList.remove('flex');
+      }
+    });
+
+    // Contact form validation & alert
+    document.getElementById('contact-form').addEventListener('submit', function (e) {
+      e.preventDefault();
+      const name = this.name.value.trim();
+      const email = this.email.value.trim();
+      const phone = this.phone.value.trim();
+      if (!name || !email || !phone) {
+        alert('Please fill in all required fields.');
+        return;
+      }
+      alert('Thank you for registering, ' + name + '!');
+      this.reset();
+    });
+
+    // Set current year in footer
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
